@@ -24,10 +24,14 @@ class gameVictoryTest extends WebTestCase
 
     public function testGameVictory()
     {
-        //const NOUGHT = 'O';
-        //const CROSS = 'X';
+        //Una diagonal
         $f = $this->board->setPositions(['O',null,null,null,'O',null,null,null,'O']);
         $p = $this->serv->gameVictory($f);
         $this->assertEquals($p,[0,4,8],'malBernie');
+
+        //Todo Null
+        $g = $this->board->setPositions([null,null,null,null,null,null,null,null,null]);
+        $h = $this->serv->gameVictory($g);
+        $this->assertEquals($h,[],'malBernie');
     }
 }
