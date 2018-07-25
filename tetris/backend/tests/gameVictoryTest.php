@@ -61,5 +61,9 @@ class gameVictoryTest extends WebTestCase
             echo $t;
         }
 
+        $aa = $this->board->setPositions([null,null,'X','X','O','O','X','O','O']);
+        $bb = $this->serv->gameVictory($aa);
+        $this->assertEquals($bb,[],'malBernie8');
+
     }
 }
