@@ -58,12 +58,22 @@ class gameVictoryTest extends WebTestCase
             $r = $this->board->setPositions($tt);
             $s = $this->serv->gameVictory($r);
             $this->assertEquals($s,[],'malBernie7');
-            echo $t;
         }
 
         $aa = $this->board->setPositions([null,null,'X','X','O','O','X','O','O']);
         $bb = $this->serv->gameVictory($aa);
         $this->assertEquals($bb,[],'malBernie8');
+
+        //Signos diferentes 2
+        for ($cc = 0; $cc < 3; $cc++) {
+            $dd=[null,null,null,null,null,null,null,null,null];
+            $dd[$cc]='X';
+            $dd[$cc+1]='O';
+            $dd[$cc+2]='X';
+            $ff = $this->board->setPositions($dd);
+            $gg = $this->serv->gameVictory($ff);
+            $this->assertEquals($gg,[],'malBernie9');
+        }
 
     }
 }
