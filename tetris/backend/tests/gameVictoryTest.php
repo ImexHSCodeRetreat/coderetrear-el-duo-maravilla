@@ -24,10 +24,28 @@ class gameVictoryTest extends WebTestCase
 
     public function testGameVictory()
     {
-        //Una diagonal
+        //Probar diagonales
+
         $f = $this->board->setPositions(['O',null,null,null,'O',null,null,null,'O']);
         $p = $this->serv->gameVictory($f);
         $this->assertEquals($p,[0,4,8],'malBernie');
+
+        $o = $this->board->setPositions([null,null,'O',null,'O',null,'O',null,null]);
+        $q = $this->serv->gameVictory($o);
+        $this->assertEquals($q,[2,4,6],'malBernie');
+
+        //Rows y Columns
+        $i = $this->board->setPositions(['X','X','X',null,null,null,null,null,null]);
+        $j = $this->serv->gameVictory($i);
+        $this->assertEquals($j,[0,1,2],'malBernie');
+
+        $k = $this->board->setPositions([null,null,null,'X','X','X',null,null,null]);
+        $l = $this->serv->gameVictory($k);
+        $this->assertEquals($l,[3,4,5],'malBernie');
+
+        $m = $this->board->setPositions([null,null,null,null,null,null,'X','X','X']);
+        $n = $this->serv->gameVictory($m);
+        $this->assertEquals($n,[6,7,8],'malBernie');
 
         //Todo Null
         $g = $this->board->setPositions([null,null,null,null,null,null,null,null,null]);
